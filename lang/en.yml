@@ -1,0 +1,5 @@
+en:
+  RobotsNoindex:
+    IS_DEV_WARNING: 'Warning: This website is running in development mode! Database credentials may show up in frontend!'
+    NO_INDEX_WARNING: 'Warning: This website is set to NOINDEX and will not be indexed by searchengines!'
+    INDEXDD_LABEL: 'Index by search engines?'

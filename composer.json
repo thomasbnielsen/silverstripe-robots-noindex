@@ -1,0 +1,16 @@
+{
+    "name": "nobrainerweb/silverstripe-robots-noindex",
+    "description": "Show a warning in the CMS when site is set to noindex / and/or when in dev mode.",
+    "type": "silverstripe-module",
+    "keywords": ["silverstripe", "robots", "index", "noindex", "dev", "warning"],
+	"license": "BSD-3-Clause",
+    "authors": [
+    {
+        "name": "Thomas B. Nielsen - Nobrainer Web",
+        "email": "nobrainerweb@gmail.com"
+    }],
+    "require": {
+        "silverstripe/framework": "~3.1"
+    }
+    
+}
