@@ -10,10 +10,18 @@
         "email": "nobrainerweb@gmail.com"
     }],
     "require": {
+<<<<<<< HEAD
         "silverstripe/framework": "~3.1",
         "stnvh/silverstripe-infoboxes": "1.*",
     },
     "extra": {
 		"installer-name": "robots-noindex"
 	}
+=======
+        "silverstripe/framework": "~3.1"
+    },
+    "extra": {
+        "installer-name": "robots-noindex"
+    }
+>>>>>>> FETCH_HEAD
 }
