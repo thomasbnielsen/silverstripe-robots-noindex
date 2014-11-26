@@ -2,7 +2,7 @@
     "name": "nobrainerweb/silverstripe-robots-noindex",
     "description": "Show a warning in the CMS when site is set to noindex",
     "type": "silverstripe-module",
-    "keywords": ["silverstripe", "robots", "index", "noindex", "dev", "warning"],
+    "keywords": ["silverstripe", "robots", "index", "noindex", "warning"],
 	"license": "BSD-3-Clause",
     "authors": [
     {
