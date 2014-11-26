@@ -1,6 +1,6 @@
 {
     "name": "nobrainerweb/silverstripe-robots-noindex",
-    "description": "Show a warning in the CMS when site is set to noindex / and/or when in dev mode.",
+    "description": "Show a warning in the CMS when site is set to noindex",
     "type": "silverstripe-module",
     "keywords": ["silverstripe", "robots", "index", "noindex", "dev", "warning"],
 	"license": "BSD-3-Clause",
@@ -10,7 +10,10 @@
         "email": "nobrainerweb@gmail.com"
     }],
     "require": {
-        "silverstripe/framework": "~3.1"
-    }
-    
+        "silverstripe/framework": "~3.1",
+        "stnvh/silverstripe-infoboxes": "1.*",
+    },
+    "extra": {
+		"installer-name": "robots-noindex"
+	}
 }
