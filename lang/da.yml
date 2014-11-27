@@ -1,5 +1,4 @@
 da:
   RobotsNoindex:
-    IS_DEV_WARNING: 'Adversel: Denne hjemmeside kører i udviklingstilstand! Database informationer kan blive vist i frontend!'
-    NO_INDEX_WARNING: 'Advarsel: Denne hjemmeside er sat til ikke at blive indekseret af søgemaskiner!'
+    NO_INDEX_WARNING: 'Ingen indeksering!'
     INDEXDD_LABEL: 'Indekser i søgemaskiner?'
