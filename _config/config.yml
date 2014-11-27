@@ -1,9 +1,6 @@
 ---
 Name: robotsnoindex
 ---
-SiteConfig:
-  extensions:
-    - RobotsNoindexSiteConfig
 SiteTree:
   extensions:
     - RobotsNoindexCMSExtensions
