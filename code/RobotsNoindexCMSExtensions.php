@@ -1,12 +1,13 @@
 <?php
 
-class RobotsNoindexCMSExtensions extends DataExtension {
+class RobotsNoindexCMSExtensions extends DataExtension
+{
 
-	public function MetaTags(&$tags) {
-		if (Director::isDev() OR Director::isTest()) {
-			$tags .= '<meta name="robots" content="noindex, nofollow" />';
-		}
-		return $tags;
-	}
-
+    public function MetaTags(&$tags)
+    {
+        if (Director::isDev() or Director::isTest()) {
+            $tags .= '<meta name="robots" content="noindex, nofollow" />';
+        }
+        return $tags;
+    }
 }
