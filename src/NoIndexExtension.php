@@ -24,7 +24,7 @@ class NoIndexExtension extends Extension
             'NoIndexWarningHeader',
             '<div class="alert alert-warning">' . _t(
                 self::class . '.NO_INDEX_WARNING',
-                "Warning: No indexing! This website is running in development mode, and is not being index by search engines"
+                "Warning: No indexing! This website is running in development mode, and is not being indexed by search engines"
             )
             . '</div>'
         ), 'Title');
