@@ -1,6 +1,6 @@
 ---
 Name: robotsnoindex
 ---
-SiteTree:
+SilverStripe\CMS\Model\SiteTree:
   extensions:
-    - RobotsNoindexCMSExtensions
+    - NobrainerWeb\NoIndex\NoIndexExtension

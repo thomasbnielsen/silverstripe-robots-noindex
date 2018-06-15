@@ -1,19 +1,23 @@
 {
     "name": "nobrainerweb/silverstripe-robots-noindex",
     "description": "Show a warning in the CMS when site is set to noindex",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "keywords": ["silverstripe", "robots", "index", "noindex", "warning"],
 	"license": "BSD-3-Clause",
     "authors": [
     {
-        "name": "Thomas B. Nielsen - Nobrainer Web",
-        "email": "nobrainerweb@gmail.com"
+        "name": "Nobrainer Web",
+        "email": "mail@nobrainer.dk"
     }],
     "require": {
-        "silverstripe/framework": "~3.1",
-        "stnvh/silverstripe-infoboxes": "1.*"
+        "silverstripe/cms": "^4.x"
     },
     "extra": {
         "installer-name": "robots-noindex"
-	}
+	},
+    "autoload": {
+        "psr-4": {
+            "NobrainerWeb\\NoIndex\\": "src/"
+        }
+    }
 }

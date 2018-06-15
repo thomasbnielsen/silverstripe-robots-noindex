@@ -1,4 +1,3 @@
 da:
-  RobotsNoindex:
-    NO_INDEX_WARNING: 'Ingen indeksering!'
-    INDEXDD_LABEL: 'Indekser i søgemaskiner?'
+  NobrainerWeb\\NoIndex\\NoIndexExtension:
+    NO_INDEX_WARNING: 'Advarsel: Ingen indeksering! Denne hjemmeside kører i udviklingstilstand og vil ikke blive indekseret af søgemaskiner'
