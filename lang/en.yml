@@ -1,3 +1,3 @@
 en:
   NobrainerWeb\\NoIndex\\NoIndexExtension:
-    NO_INDEX_WARNING: 'Warning: No indexing! This website is running in development mode, and is not being index by search engines'
+    NO_INDEX_WARNING: 'Warning: No indexing! This website is running in development mode, and is not being indexed by search engines'
