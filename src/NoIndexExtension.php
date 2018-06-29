@@ -20,6 +20,9 @@ class NoIndexExtension extends Extension
 
     public function updateCMSFields($fields)
     {
+        if (Director::isLive()) {
+            return;
+        }
         $fields->addFieldToTab('Root.Main', LiteralField::create(
             'NoIndexWarningHeader',
             '<div class="alert alert-warning">' . _t(
