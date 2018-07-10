@@ -23,14 +23,14 @@ class NoIndexExtension extends Extension
         if (Director::isLive()) {
             return;
         }
-        $fields->addFieldToTab('Root.Main', LiteralField::create(
+        $fields->unshift(LiteralField::create(
             'NoIndexWarningHeader',
             '<div class="alert alert-warning">' . _t(
                 self::class . '.NO_INDEX_WARNING',
                 "Warning: No indexing! This website is running in development mode, and is not being indexed by search engines"
             )
             . '</div>'
-        ), 'Title');
+        ));
     }
 
 }
