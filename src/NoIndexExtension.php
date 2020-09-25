@@ -3,6 +3,7 @@
 namespace NobrainerWeb\NoIndex;
 
 use SilverStripe\Control\Director;
+use SilverStripe\Core\Environment;
 use SilverStripe\Core\Extension;
 use SilverStripe\Forms\LiteralField;
 
@@ -11,7 +12,7 @@ class NoIndexExtension extends Extension
 
     public function MetaTags(&$tags)
     {
-        if (Director::isDev() || Director::isTest()) {
+        if (Director::isDev() || Director::isTest() || (Environment::getEnv('SEO_PREVENT_INDEXING') === true)) {
             $tags .= '<meta name="robots" content="noindex, nofollow" />';
         }
 
