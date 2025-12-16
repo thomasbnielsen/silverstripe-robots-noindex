@@ -3,12 +3,16 @@
 namespace NobrainerWeb\NoIndex;
 
 use SilverStripe\Control\Director;
+use SilverStripe\Core\Config\Configurable;
 use SilverStripe\Core\Environment;
 use SilverStripe\Core\Extension;
 use SilverStripe\Forms\LiteralField;
 
 class NoIndexExtension extends Extension
 {
+    use Configurable;
+
+    private static $no_index_domains;
 
     public function MetaTags(&$tags)
     {
@@ -37,22 +41,23 @@ class NoIndexExtension extends Extension
      */
     private function getWarningMessage()
     {
-        $message = _t(self::class . '.NO_INDEX_WARNING', 'Warning: No indexing!');
+        if ($this->isOnDevDomain()) {
+            return _t(self::class . '.NO_INDEX_WARNING_DEV_SERVER', 'Warning: no indexing! Search engine indexing disabled as we are on a dev domain');
+        }
 
         if (Director::isDev()) {
-            $message .= '<br>' . _t(self::class . '.NO_INDEX_WARNING_DEV', 'This website is running in development mode, and is not being indexed by search engines');
-            return $message;
+            return _t(self::class . '.NO_INDEX_WARNING_DEV', 'Warning: no indexing! This website is running in dev mode, and is not being indexed by search engines');
         }
 
         if (Director::isTest()) {
-            $message .= '<br>' . _t(self::class . '.NO_INDEX_WARNING_TEST', 'This website is running in test mode, and is not being indexed by search engines');
+            return _t(self::class . '.NO_INDEX_WARNING_TEST', 'Warning: no indexing! This website is running in test mode, and is not being indexed by search engines');
         }
 
         if (Environment::getEnv('SEO_PREVENT_INDEXING') === true) {
-            $message .= '<br>' . _t(self::class . '.NO_INDEX_WARNING_ENV', 'Search engine indexing is disabled by an environment setting');
+            return _t(self::class . '.NO_INDEX_WARNING_ENV', 'Warning: no indexing! Search engine indexing disabled by an environment setting');
         }
 
-        return $message;
+        return null;
     }
 
     /**
@@ -61,21 +66,23 @@ class NoIndexExtension extends Extension
      */
     private function preventIndexing()
     {
-        if ($this->isOnDevServer()) {
+        if ($this->isOnDevDomain()) {
             return true;
         }
 
         return (Director::isDev() || Director::isTest() || (Environment::getEnv('SEO_PREVENT_INDEXING') === true));
     }
 
-    private function isOnDevServer()
+    private function isOnDevDomain()
     {
         $http_host = $_SERVER['HTTP_HOST'];
+        $dev_servers = NoIndexExtension::config()->get('no_index_domains');
 
-        if (str_ends_with($http_host, '.ddev.site') || str_ends_with($http_host, '.nobrainer.dk')) {
-            return true;
+        foreach ($dev_servers as $server) {
+            if (str_ends_with($http_host, $server)) {
+                return true;
+            }
         }
-
         return false;
     }
 }

@@ -1,3 +1,7 @@
 da:
   NobrainerWeb\NoIndex\NoIndexExtension:
     NO_INDEX_WARNING: 'Advarsel: Ingen indeksering! Denne hjemmeside kører i udviklingstilstand og vil ikke blive indekseret af søgemaskiner'
+    NO_INDEX_WARNING_DEV: 'Advarsel: Ingen indeksering! Denne hjemmeside kører i udviklingstilstand og vil ikke blive indekseret af søgemaskiner'
+    NO_INDEX_WARNING_TEST: 'Advarsel: Ingen indeksering! Denne hjemmeside kører i test tilstand og vil ikke blive indekseret af søgemaskiner'
+    NO_INDEX_WARNING_ENV: 'Advarsel: Ingen indeksering! indeksering er deaktiveret via en ENV indstilling'
+    NO_INDEX_WARNING_DEV_SERVER: 'Advarsel: Ingen indeksering! indeksering er deaktiveret da vi er på et udviklingsdomæne'
