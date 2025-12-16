@@ -12,8 +12,9 @@ class NoIndexExtension extends Extension
 
     public function MetaTags(&$tags)
     {
-        if ($this->isActive()) {
-            $tags .= '<meta name="robots" content="noindex, nofollow" />';
+        if ($this->preventIndexing()) {
+            $tags .= '
+<meta name="robots" content="noindex, nofollow" />';
         }
 
         return $tags;
@@ -21,7 +22,7 @@ class NoIndexExtension extends Extension
 
     public function updateCMSFields($fields)
     {
-        if (! $this->isActive()) {
+        if (!$this->preventIndexing()) {
             return;
         }
         $fields->unshift(LiteralField::create(
@@ -34,30 +35,47 @@ class NoIndexExtension extends Extension
      * Returns a warning message based on the current configuration of the site
      * @return string
      */
-    private function getWarningMessage() {
+    private function getWarningMessage()
+    {
         $message = _t(self::class . '.NO_INDEX_WARNING', 'Warning: No indexing!');
 
         if (Director::isDev()) {
-            $message .= '<br>'. _t(self::class . '.NO_INDEX_WARNING_DEV', 'This website is running in development mode, and is not being indexed by search engines');
+            $message .= '<br>' . _t(self::class . '.NO_INDEX_WARNING_DEV', 'This website is running in development mode, and is not being indexed by search engines');
             return $message;
         }
 
         if (Director::isTest()) {
-            $message .= '<br>'. _t(self::class . '.NO_INDEX_WARNING_TEST', 'This website is running in test mode, and is not being indexed by search engines');
+            $message .= '<br>' . _t(self::class . '.NO_INDEX_WARNING_TEST', 'This website is running in test mode, and is not being indexed by search engines');
         }
 
         if (Environment::getEnv('SEO_PREVENT_INDEXING') === true) {
-            $message .= '<br>'. _t(self::class . '.NO_INDEX_WARNING_ENV', 'Search engine indexing is disabled by an environment setting');
+            $message .= '<br>' . _t(self::class . '.NO_INDEX_WARNING_ENV', 'Search engine indexing is disabled by an environment setting');
         }
 
         return $message;
     }
 
     /**
-     * Decides whether the module should be enabled
+     * Decides whether the module should prevent indexing
      * @return bool
      */
-    private function isActive() {
+    private function preventIndexing()
+    {
+        if ($this->isOnDevServer()) {
+            return true;
+        }
+
         return (Director::isDev() || Director::isTest() || (Environment::getEnv('SEO_PREVENT_INDEXING') === true));
+    }
+
+    private function isOnDevServer()
+    {
+        $http_host = $_SERVER['HTTP_HOST'];
+
+        if (str_ends_with($http_host, '.ddev.site') || str_ends_with($http_host, '.nobrainer.dk')) {
+            return true;
+        }
+
+        return false;
     }
 }
