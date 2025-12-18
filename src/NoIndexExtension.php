@@ -77,10 +77,11 @@ class NoIndexExtension extends Extension
     {
         $http_host = $_SERVER['HTTP_HOST'];
         $dev_servers = NoIndexExtension::config()->get('no_index_domains');
-
-        foreach ($dev_servers as $server) {
-            if (str_ends_with($http_host, $server)) {
-                return true;
+        if ($dev_servers) {
+            foreach ($dev_servers as $server) {
+                if (str_ends_with($http_host, $server)) {
+                    return true;
+                }
             }
         }
         return false;
